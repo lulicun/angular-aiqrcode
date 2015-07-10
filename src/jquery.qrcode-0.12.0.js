@@ -148,6 +148,8 @@
 
         if (qr.isDark(row, col)) {
             context.rect(left, top, width, width);
+            //console.log(left+width/2, top+width/2, width/2);
+            //context.arc(left+width/2, top+width/2, width/2, 0, 2 * Math.PI);
         }
     }
 
@@ -265,6 +267,7 @@
                 var l = settings.left + col * moduleSize;
                 var t = settings.top + row * moduleSize;
                 var w = moduleSize;
+                //console.log(l, t, w);
 
                 fn(qr, context, settings, l, t, w, row, col);
             }
@@ -284,6 +287,10 @@
         } else {
             context.fillStyle = settings.fill;
             context.fill();
+
+            context.strokeStyle = "#ffffff";
+            context.lineWidth   = 1;
+            context.stroke();
         }
     }
 
