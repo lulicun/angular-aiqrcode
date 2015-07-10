@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="angular-aiqrcode-demo" >
+
+
+<div class="outer-container" style="height: 500px;
+  background: url(light-heart.png) no-repeat center;">
+<div id="aiqrcode"
+    style="background: url(light.png) no-repeat center;
+    height: auto;
+    width: 306px;
+    margin: auto auto;">
+        <aiqrcode
+                render="canvas"
+                data="http://cars.lulicun.com"
+                size="300"
+                minversion="10"
+                color="grey">
+        </aiqrcode>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+<!--
+<script src="../build/angular-aiqrcode.min.js"></script>
+!-->
+<script src="../src/angular-jquery-qrcode.js"></script>
+<script src="../src/jquery-1.11.3.min.js"></script>
+<script src="../src/jquery.qrcode-0.12.0.js"></script>
+<script>
+    angular.module('angular-aiqrcode-demo', ['aiqrcode']);
+</script>
+
+</body>
+</html>

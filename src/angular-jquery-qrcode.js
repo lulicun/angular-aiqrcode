@@ -4,6 +4,7 @@ angular.module('aiqrcode', []).
 
     var $ = jQuery;
 
+
     var updateQrCode = function(element, attrs) {
       var options = {
               render: !attrs.render ? 'canvas' : attrs.render,
@@ -22,15 +23,15 @@ angular.module('aiqrcode', []).
               // modes: 0: normal, 1: label strip, 2: label box, 3: image strip, 4: image box
               mode: parseInt(!attrs.mode ? 0 : attrs.mode, 10),
 
-              mSize: parseInt(!attrs.msize ? 0.1 : attrs.msize, 10) * 0.01,
-              mPosX: parseInt(!attrs.mposx ? 0.5 : attrs.mposx, 10) * 0.01,
-              mPosY: parseInt(!attrs.mposy ? 0.5 : attrs.mposy, 10) * 0.01,
+              mSize: parseInt(!attrs.msize ? 10 : attrs.msize, 10) * 0.01,
+              mPosX: parseInt(!attrs.mposx ? 50 : attrs.mposx, 10) * 0.01,
+              mPosY: parseInt(!attrs.mposy ? 50 : attrs.mposy, 10) * 0.01,
 
               label: !attrs.label ? 'aiQRCode' : attrs.label,
               fontname: !attrs.fontname ? 'sans' : attrs.fontname,
               fontcolor: !attrs.fontcolor ? '#000000' : attrs.fontcolor,
 
-              image: attrs.image
+              image: null
           };
       $('#aiqrcode').empty().qrcode(options);
     }
@@ -47,7 +48,7 @@ angular.module('aiqrcode', []).
           updateQrCode(element, attrs);
         });
 
-        attrs.$observe('img', function(val){
+        attrs.$observe('image', function(val){
           updateQrCode(element, attrs);
         });
         attrs.$observe('typeNumber', function(val){
