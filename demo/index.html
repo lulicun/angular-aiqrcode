@@ -9,23 +9,25 @@
 
 
 <aiqrcode
-        render="canvas"
-        data="http://cars.lulicun.com"
-        radius="50"
-        size="300"
-        minversion="7"
-        eclevel="L"
-        color="{{color}}"
-        background = "{{background}}"
-        isdot="true"
-        mode="{{mode}}"
-        image="{{imgUrl}}">
+    render="canvas"
+    data="http://cars.lulicun.com"
+    radius="50"
+    size="300"
+    minversion="7"
+    eclevel="L"
+    color="{{color}}"
+    background = "{{background}}"
+    isdot="true"
+    mode="{{mode}}"
+    image="{{imgUrl}}"
+    ng-style="{{aiStyle}}">
 </aiqrcode>
 
 Color:<input type="text" ng-model="color"/><br/>
 Background:<input type="text" ng-model="background"/><br/>
 Mode:<input type="text" ng-model="mode"/><br/>
 <div ng-show="mode == 4">Image:<input type="text" ng-model="imgUrl"/></div>
+
 
 
 </div>
@@ -45,6 +47,10 @@ Mode:<input type="text" ng-model="mode"/><br/>
       $scope.background = null;
       $scope.mode = '1';
       $scope.imgUrl = 'light-heart.png';
+      $scope.aiStyle = {background: 'url("logo.png") no-repeat center',
+                        width: '300px',
+                        height: '300px'
+                    };
     }]);
 </script>
 
