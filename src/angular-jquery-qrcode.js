@@ -6,6 +6,7 @@ angular.module('aiqrcode', []).
 
 
     var updateQrCode = function(element, attrs) {
+      console.log("update");
       var options = {
               render: !attrs.render ? 'canvas' : attrs.render,
               ecLevel: !attrs.eclevel ? 'L' : attrs.eclevel,
@@ -31,7 +32,9 @@ angular.module('aiqrcode', []).
               fontname: !attrs.fontname ? 'sans' : attrs.fontname,
               fontcolor: !attrs.fontcolor ? '#000000' : attrs.fontcolor,
 
-              image: null
+              isdot: !attrs.isdot ? false : attrs.isdot,
+
+              image: $('#ai-image')[0] //require user create another element
           };
       $('#aiqrcode').empty().qrcode(options);
     }
@@ -41,24 +44,62 @@ angular.module('aiqrcode', []).
       replace: true,
       template: '<div class="aiqrcode"></div>',
       link: function (scope, element, attrs) {
+        attrs.$observe('render', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('eclevel', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('minversion', function(val){
+          updateQrCode(element, attrs);
+        });
+
+        attrs.$observe('color', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('background', function(val){
+          updateQrCode(element, attrs);
+        });
+
         attrs.$observe('data', function(val){
           updateQrCode(element, attrs);
         });
         attrs.$observe('size', function(val){
           updateQrCode(element, attrs);
         });
+        attrs.$observe('radius', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('quiet', function(val){
+          updateQrCode(element, attrs);
+        });
+
+        attrs.$observe('mode', function(val){
+          updateQrCode(element, attrs);
+        });
+
+        attrs.$observe('msize', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('mposx', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('mposy', function(val){
+          updateQrCode(element, attrs);
+        });
+
+        attrs.$observe('label', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('fontname', function(val){
+          updateQrCode(element, attrs);
+        });
+        attrs.$observe('fontcolor', function(val){
+          updateQrCode(element, attrs);
+        });
 
         attrs.$observe('image', function(val){
-          updateQrCode(element, attrs);
-        });
-        attrs.$observe('typeNumber', function(val){
-          updateQrCode(element, attrs);
-        });
-        attrs.$observe('color', function(val){
-          updateQrCode(element, attrs);
-        });
-        attrs.$observe('background', function(val){
-          updateQrCode(element, attrs);
+          setTimeout(updateQrCode(element, attrs), 500);
         });
       }
     }

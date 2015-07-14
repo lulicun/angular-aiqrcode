@@ -284,13 +284,16 @@
             context.clip();
             context.drawImage(settings.fill, 0, 0, settings.size, settings.size);
             context.restore();
-        } else {
+        } else if(settings.isdot) {
             context.fillStyle = settings.fill;
             context.fill();
 
             context.strokeStyle = "#ffffff";
             context.lineWidth   = 1;
             context.stroke();
+        } else {
+            context.fillStyle = settings.fill;
+            context.fill();
         }
     }
 
