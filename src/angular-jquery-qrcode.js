@@ -6,7 +6,6 @@ angular.module('aiqrcode', []).
 
 
     var updateQrCode = function(element, attrs) {
-      console.log("update");
       var options = {
               render: !attrs.render ? 'canvas' : attrs.render,
               ecLevel: !attrs.eclevel ? 'L' : attrs.eclevel,
@@ -36,13 +35,13 @@ angular.module('aiqrcode', []).
 
               image: $('#ai-image')[0] //require user create another element
           };
-      $('#aiqrcode').empty().qrcode(options);
+      $('#ai-qrcode').empty().qrcode(options);
     }
 
     return {
       restrict: 'E',
       replace: true,
-      template: '<div class="aiqrcode"></div>',
+      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode"></div></div>',
       link: function (scope, element, attrs) {
         attrs.$observe('render', function(val){
           updateQrCode(element, attrs);
@@ -99,7 +98,10 @@ angular.module('aiqrcode', []).
         });
 
         attrs.$observe('image', function(val){
-          setTimeout(updateQrCode(element, attrs), 500);
+          $('#ai-image').attr('src', val);
+          setTimeout(function() {
+            updateQrCode(element, attrs);
+          }, 250);
         });
       }
     }

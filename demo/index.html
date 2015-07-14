@@ -7,31 +7,26 @@
 <body ng-app="angular-aiqrcode-demo" >
 <div ng-controller="ExampleController">
 
-<div class="outer-container" style="height: 500px;
-  background: url(light-heart.png) no-repeat center;">
-    <div id="aiqrcode"
-        style="background: url(light.png) no-repeat center;
-        height: auto;
-        width: 306px;
-        margin: auto auto;">
-            <aiqrcode
-                    render="canvas"
-                    data="http://cars.lulicun.com"
-                    radius="50"
-                    size="300"
-                    minversion="7"
-                    eclevel="L"
-                    color="{{color}}"
-                    isdot="true"
-                    mode="{{mode}}"
-                    image="{{imgUrl}}">
-            </aiqrcode>
-    </div>
-</div>
-<img id="ai-image" ng-src="{{imgUrl}}" ng-hide="true">
+
+<aiqrcode
+        render="canvas"
+        data="http://cars.lulicun.com"
+        radius="50"
+        size="300"
+        minversion="7"
+        eclevel="L"
+        color="{{color}}"
+        background = "{{background}}"
+        isdot="true"
+        mode="{{mode}}"
+        image="{{imgUrl}}">
+</aiqrcode>
+
 Color:<input type="text" ng-model="color"/><br/>
+Background:<input type="text" ng-model="background"/><br/>
 Mode:<input type="text" ng-model="mode"/><br/>
-Image:<input type="file" ng-show="mode == 4"/><br/>
+<div ng-show="mode == 4">Image:<input type="text" ng-model="imgUrl"/></div>
+
 
 </div>
 
@@ -47,6 +42,7 @@ Image:<input type="file" ng-show="mode == 4"/><br/>
     angular.module('angular-aiqrcode-demo', ['aiqrcode'])
     .controller('ExampleController', ['$scope', function($scope) {
       $scope.color = 'red';
+      $scope.background = null;
       $scope.mode = '1';
       $scope.imgUrl = 'light-heart.png';
     }]);
