@@ -41,7 +41,7 @@ angular.module('aiqrcode', []).
     return {
       restrict: 'E',
       replace: true,
-      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode" style="text-align: center;"></div></div>',
+      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode""></div></div>',
       link: function (scope, element, attrs) {
         attrs.$observe('render', function(val){
           updateQrCode(element, attrs);
