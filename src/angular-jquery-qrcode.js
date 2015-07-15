@@ -16,7 +16,7 @@ angular.module('aiqrcode', []).
               // fill: $('#img-buffer')[0],
 
               text: !attrs.data ? 'https://www.aiqrcode.com' : attrs.data,
-              size: parseInt(!attrs.size ? '300' : attrs.size, 10),
+              size: parseInt(!attrs.size ? '100' : attrs.size, 10),
               radius: parseInt(!attrs.radius ? 0 : attrs.radius, 10) * 0.01,
               quiet: parseInt(!attrs.quiet ? 1 : attrs.quiet, 10),
 
@@ -41,7 +41,7 @@ angular.module('aiqrcode', []).
     return {
       restrict: 'E',
       replace: true,
-      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode"></div></div>',
+      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode" style="text-align: center;"></div></div>',
       link: function (scope, element, attrs) {
         attrs.$observe('render', function(val){
           updateQrCode(element, attrs);
