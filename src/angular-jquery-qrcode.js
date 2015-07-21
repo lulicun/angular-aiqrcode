@@ -31,7 +31,7 @@ angular.module('aiqrcode', []).
               fontname: !attrs.fontname ? 'sans' : attrs.fontname,
               fontcolor: !attrs.fontcolor ? '#000000' : attrs.fontcolor,
 
-              isdot: !attrs.isdot ? false : attrs.isdot,
+              isdot: attrs.isdot == "true" ? true : false,
 
               image: $('#ai-image')[0] //require user create another element
           };
