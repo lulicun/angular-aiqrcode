@@ -97,6 +97,10 @@ angular.module('aiqrcode', []).
           updateQrCode(element, attrs);
         });
 
+        attrs.$observe('isdot', function(val){
+          updateQrCode(element, attrs);
+        });
+
         attrs.$observe('image', function(val){
           $('#ai-image').attr('src', val);
           setTimeout(function() {

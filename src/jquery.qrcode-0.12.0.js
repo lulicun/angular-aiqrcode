@@ -289,7 +289,7 @@
             context.fill();
 
             context.strokeStyle = "#ffffff";
-            context.lineWidth   = 1;
+            context.lineWidth   = 0.5;
             context.stroke();
         } else {
             context.fillStyle = settings.fill;
