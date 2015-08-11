@@ -4,17 +4,8 @@ angular.module('aiqrcode', []).
 
     var $ = jQuery;
 
-    function generateUUID(){
-      var d = new Date().getTime();
-      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = (d + Math.random()*16)%16 | 0;
-          d = Math.floor(d/16);
-          return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-      });
-      return uuid;
-    };
 
-    var updateQrCode = function(element, attrs, aiIDs) {
+    var updateQrCode = function(element, attrs) {
       var options = {
               render: !attrs.render ? 'canvas' : attrs.render,
               ecLevel: !attrs.eclevel ? 'L' : attrs.eclevel,
@@ -42,90 +33,78 @@ angular.module('aiqrcode', []).
 
               isdot: attrs.isdot == "true" ? true : false,
 
-              image: $('#' + aiIDs.image)[0] //require user create another element
+              image: $('#ai-image')[0] //require user create another element
           };
-      $('#' + aiIDs.qrcode).empty().qrcode(options);
+      $('#ai-qrcode').empty().qrcode(options);
     }
 
     return {
       restrict: 'E',
       replace: true,
-      template: '<div class="aiqrcode"></div>',
+      template: '<div class="aiqrcode"><img id="ai-image" src="" ng-hide="true"><div id="ai-qrcode""></div></div>',
       link: function (scope, element, attrs) {
-
-        var aiIDs = {
-          image: 'aiqrcode-image-' + generateUUID(),
-          qrcode: 'aiqrcode-' + generateUUID()
-        };
-
-        var imagehtml = "<img id=\'" + aiIDs.image + "\' src='' ng-hide='true' class='ng-hide' />";
-        var qrcodehtml = "<div id=\'"+ aiIDs.qrcode + "\'></div>";
-
-        element.append(imagehtml);
-        element.append(qrcodehtml);
-
         attrs.$observe('render', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('eclevel', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('minversion', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('color', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('background', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('data', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('size', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('radius', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('quiet', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('mode', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('msize', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('mposx', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('mposy', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('label', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('fontname', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
         attrs.$observe('fontcolor', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('isdot', function(val){
-          updateQrCode(element, attrs, aiIDs);
+          updateQrCode(element, attrs);
         });
 
         attrs.$observe('image', function(val){
-          $('#' + aiIDs.image).attr('src', val);
+          $('#ai-image').attr('src', val);
           setTimeout(function() {
-            updateQrCode(element, attrs, aiIDs);
+            updateQrCode(element, attrs);
           }, 250);
         });
       }
